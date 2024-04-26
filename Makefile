@@ -6,7 +6,7 @@ SRCS =
 
 BONUS_SRCS = 
 
-HEADERS = 
+HEADERS =
 
 OBJS = $(SRCS:.c=.o)
 
