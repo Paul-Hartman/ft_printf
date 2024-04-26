@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:28:42 by phartman          #+#    #+#             */
-/*   Updated: 2024/04/26 18:42:03 by phartman         ###   ########.fr       */
+/*   Updated: 2024/04/26 19:06:30 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,9 +126,20 @@ void ft_print_hexupper(int n)
 
 void ft_print_pointer(void *n)
 {
-	unsigned long long int adr;
-	ft_putstr_fd("0x5555", 1);
-	ft_print_hexlower((unsigned long long int)n);
+	uintptr_t address;
+	address = (uintptr_t)n;
+	int digit;
+	int size = sizeof(address) * 2;
+	ft_putstr_fd("0x", 1);
+	while ((address >> (4 * (size - 1))) == 0 && size > 1) 
+		size--;
+	while(size - 1 >= 0)
+	{
+		digit = (address >> (4 * (size - 1))) & 0xF;
+		ft_putchar_fd("0123456789abcdef"[digit],1);
+		size--;
+	}
+
 }
 
 int	parse_string(const char ch, va_list args)
@@ -176,7 +187,7 @@ int	ft_printf(const char *format, ...)
 
 int main(int argc, char const *argv[])
 {
-	char *dog= "dog";
+	unsigned int *dog;
 	ft_printf("Dog %c, %s, %d, %i, %u, %%, %x, %X, %p\n", 'b' ,"cat", 12345, 6345423, 2147483657, 45, 45, dog);
 	printf("Dog %c, %s, %d, %i, %u, %%, %x, %X, %p\n", 'b' ,"cat", 12345, 6345423, 2147483657, 45, 45, dog);
 }
