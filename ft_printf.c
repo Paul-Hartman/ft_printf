@@ -6,47 +6,13 @@
 /*   By: phartman <phartman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:28:42 by phartman          #+#    #+#             */
-/*   Updated: 2024/04/26 19:06:30 by phartman         ###   ########.fr       */
+/*   Updated: 2024/04/30 18:30:12 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "libft.h"
 #include "libftprintf.h"
 
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	while (*s)
-	{
-		ft_putchar_fd(*s, fd);
-		s++;
-	}
-}
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	if (n == -2147483648)
-	{
-		ft_putstr_fd("-2147483648", fd);
-		return ;
-	}
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		n = -n;
-	}
-	if (n >= 10)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd(n % 10 + '0', fd);
-	}
-	else
-		ft_putchar_fd(n + '0', fd);
-}
 
 void ft_putnbruns_fd(unsigned int n, int fd)
 {
@@ -100,7 +66,7 @@ void ft_print_hexlower(int n)
 	}
 }
 
-void ft_print_hexupper(int n)
+void ft_print_hexupper(int n, char *base)
 {
 	int exponent;
 	long remainder;
@@ -124,32 +90,43 @@ void ft_print_hexupper(int n)
 	}
 }
 
-void ft_print_pointer(void *n)
+int ft_print_pointer(void *n)
 {
-	uintptr_t address;
-	address = (uintptr_t)n;
+	unsigned long address;
 	int digit;
-	int size = sizeof(address) * 2;
+	int size;
+	int count;
+
+	count = 0;
+	size = sizeof(address) * 2;
+	address = (unsigned long)n;
 	ft_putstr_fd("0x", 1);
-	while ((address >> (4 * (size - 1))) == 0 && size > 1) 
-		size--;
-	while(size - 1 >= 0)
+	
 	{
 		digit = (address >> (4 * (size - 1))) & 0xF;
-		ft_putchar_fd("0123456789abcdef"[digit],1);
+		ft_putchar_fd("0123456789abcdef"[digit], 1);
+		count++;
 		size--;
 	}
-
+	return (count); 
 }
 
 int	parse_string(const char ch, va_list args)
 {
+	int count;
+	char *str;
+
+	count = 0;
 	if (ch == 'c')
 		ft_putchar_fd((char)va_arg(args, int), 1);
 	if (ch == 's')
-		ft_putstr_fd(va_arg(args, char *), 1);
+	{
+		str = va_arg(args, char *);
+		count = ft_strlen(str);
+		ft_putstr_fd(str, 1);
+	}
 	if (ch == 'p')
-		ft_print_pointer(va_arg(args, void *));
+		count = ft_print_pointer(va_arg(args, void *));
 	if (ch == 'd' || ch == 'i')
 		ft_putnbr_fd(va_arg(args, int), 1);
 	if (ch == 'u')
@@ -160,6 +137,8 @@ int	parse_string(const char ch, va_list args)
 		ft_print_hexupper(va_arg(args, int));
 	if (ch == '%')
 		ft_putchar_fd('%', 1);
+
+	return (count);
 }
 
 int	ft_printf(const char *format, ...)
@@ -188,8 +167,8 @@ int	ft_printf(const char *format, ...)
 int main(int argc, char const *argv[])
 {
 	unsigned int *dog;
-	ft_printf("Dog %c, %s, %d, %i, %u, %%, %x, %X, %p\n", 'b' ,"cat", 12345, 6345423, 2147483657, 45, 45, dog);
-	printf("Dog %c, %s, %d, %i, %u, %%, %x, %X, %p\n", 'b' ,"cat", 12345, 6345423, 2147483657, 45, 45, dog);
+	ft_printf("Dog %c, %s, %d, %i, %u, %%, %x, %X, %p\n", 'b' ,"cat", 12345, 6345423, 27, 45457447, 45457447, dog);
+	printf("Dog %c, %s, %d, %i, %u, %%, %x, %X, %p\n", 'b' ,"cat", 12345, 6345423, 27, 45457447, 45457447, dog);
 }
 
 
