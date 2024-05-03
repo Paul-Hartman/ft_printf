@@ -12,5 +12,10 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putchar_fd(char c, int fd);
 size_t	ft_strlen(const char *s);
+int ft_print_hex(unsigned long n, char *base);
+int ft_print_pointer(void *n);
+int ft_countnbr(int n);
+int ft_countnbruns(unsigned int n);
+int ft_countstr(char *str);
 
 #endif
