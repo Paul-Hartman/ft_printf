@@ -10,11 +10,12 @@
                 "-Wall",
                 "-Wextra",
                 "-Werror",
-                "utility.c",
-                "ft_printf.c",
+                "tester.c",
+                "-L.",
+				"-lbsd",
+				"-lft",
                 "-o",
-                "my_program",
-                "-Iinclude"
+                "my_program"
             ],
             "group": {
                 "kind": "build",

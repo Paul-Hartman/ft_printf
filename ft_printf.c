@@ -6,16 +6,11 @@
 /*   By: phartman <phartman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:28:42 by phartman          #+#    #+#             */
-/*   Updated: 2024/05/03 14:56:42 by phartman         ###   ########.fr       */
+/*   Updated: 2024/05/03 15:22:45 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
-
-
-
-
-
+#include "ft_printf.h"
 
 int	parse_string(const char ch, va_list args)
 {
@@ -73,19 +68,19 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
-int main()
-{
-	unsigned int existingVariable = 0;
-	unsigned int *dog = &existingVariable;
-	*dog = 10;  // This is now valid because 'dog' points to 'existingVariable'.
-	unsigned char existing = 0;
-	unsigned char *cat = &existing;
-	*cat = 10;  // This is now valid because 'dog' points to 'existingVariable'.
+// int main()
+// {
+// 	unsigned int existingVariable = 0;
+// 	unsigned int *dog = &existingVariable;
+// 	*dog = 10;  // This is now valid because 'dog' points to 'existingVariable'.
+// 	unsigned char existing = 0;
+// 	unsigned char *cat = &existing;
+// 	*cat = 10;  // This is now valid because 'dog' points to 'existingVariable'.
 
-	printf("Total size:%i: \n", ft_printf("%u", 123));
-	printf("Total size:%i: \n", printf("%u", 123));
-	printf("Total size:%i: \n", ft_printf("%c, %s, %p, %d, %i, %u, %x, %X, %%", 'c', "string", cat, 123, 123, 123, 1111, 1111));
-	printf("Total size:%i: \n", printf("%c, %s, %p, %d, %i, %u, %x, %X, %%", 'c', "string", cat, 123, 123, 123, 1111, 1111));
-}
+// 	printf("Total size:%i: \n", ft_printf("%u", 123));
+// 	printf("Total size:%i: \n", printf("%u", 123));
+// 	printf("Total size:%i: \n", ft_printf("%c, %s, %p, %d, %i, %u, %x, %X, %%", 'c', "string", cat, 123, 123, 123, 1111, 1111));
+// 	printf("Total size:%i: \n", printf("%c, %s, %p, %d, %i, %u, %x, %X, %%", 'c', "string", cat, 123, 123, 123, 1111, 1111));
+// }
 
 

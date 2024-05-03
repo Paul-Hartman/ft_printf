@@ -2,15 +2,11 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = 
+SRCS = helper.c utility.c ft_printf.c
 
-BONUS_SRCS = 
-
-HEADERS =
+HEADERS = libftprintf.h
 
 OBJS = $(SRCS:.c=.o)
-
-BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 NAME = libftprintf.a
 
@@ -22,14 +18,11 @@ $(NAME): $(OBJS)
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-bonus: $(OBJS) $(BONUS_OBJS)
-	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
-
 clean: 
-	rm -f $(OBJS) $(BONUS_OBJS)
+	rm -f $(OBJS)
 
 fclean:
-	rm -f $(OBJS) $(NAME) $(BONUS_OBJS)
+	rm -f $(OBJS) $(NAME)
 
 re: fclean all
 

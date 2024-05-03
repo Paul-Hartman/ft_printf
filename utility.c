@@ -6,11 +6,11 @@
 /*   By: phartman <phartman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:00:45 by phartman          #+#    #+#             */
-/*   Updated: 2024/05/03 14:49:16 by phartman         ###   ########.fr       */
+/*   Updated: 2024/05/03 15:23:05 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	ft_putchar_fd(char c, int fd)
 {
