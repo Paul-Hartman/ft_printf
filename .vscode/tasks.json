@@ -8,12 +8,8 @@
             "command": "cc",
             "args": [
                 "-Wall",
-                "-Wextra",
-                "-Werror",
                 "tester.c",
-                "-L.",
-				"-lbsd",
-				"-lft",
+                "./libftprintf.a",
                 "-o",
                 "my_program"
             ],
