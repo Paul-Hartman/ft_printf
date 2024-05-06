@@ -14,7 +14,7 @@
 
 int	parse_string(const char ch, va_list args)
 {
-	int count;
+	int	count;
 
 	if (ch == 'c')
 	{
@@ -67,20 +67,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
-// int main()
-// {
-// 	unsigned int existingVariable = 0;
-// 	unsigned int *dog = &existingVariable;
-// 	*dog = 10;  // This is now valid because 'dog' points to 'existingVariable'.
-// 	unsigned char existing = 0;
-// 	unsigned char *cat = &existing;
-// 	*cat = 10;  // This is now valid because 'dog' points to 'existingVariable'.
-
-// 	printf("Total size:%i: \n", ft_printf("%u", 123));
-// 	printf("Total size:%i: \n", printf("%u", 123));
-// 	printf("Total size:%i: \n", ft_printf("%c, %s, %p, %d, %i, %u, %x, %X, %%", 'c', "string", cat, 123, 123, 123, 1111, 1111));
-// 	printf("Total size:%i: \n", printf("%c, %s, %p, %d, %i, %u, %x, %X, %%", 'c', "string", cat, 123, 123, 123, 1111, 1111));
-// }
-
-
