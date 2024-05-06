@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRCS = helper.c utility.c ft_printf.c
 
-HEADERS = libftprintf.h
+HEADERS = ft_printf.h
 
 OBJS = $(SRCS:.c=.o)
 
@@ -26,4 +26,4 @@ fclean:
 
 re: fclean all
 
-.PHONY: all fclean clean re bonus
+.PHONY: all fclean clean re
