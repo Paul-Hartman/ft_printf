@@ -42,14 +42,23 @@ int main()
 	printf("size: %i\n", ft_printf("This is an pointer: %p\n", 0));
 	printf("size: %i\n", printf("This is an pointer: %p\n", 0));
 
+	// int i = 0;
+	// while(i > -1000)
+	// {
+	// 		printf("size: %i\n", ft_printf("This is an hex: %x\n", i));
+	// 		printf("size: %i\n", printf("This is an hex: %x\n", i));
+	// 	i -=100;
+
+	// }
+
 	// Test with a floating-point number
 	//int n = -1;
 	// printf("size: %i\n", ft_printf("This is a int: %d\n", 9223372036854775807LL));
 	// printf("size: %i\n", printf("This is a int: %d\n", 9223372036854775807LL));
 
 	//write me a test for hex numbers
-	printf("size: %i\n", ft_printf("This is a hex: %x\n", -4));
-	printf("size: %i\n", printf("This is a hex: %x\n", -4));
+	printf("size: %i\n", ft_printf("This is a hex: %x\n", ULONG_MAX));
+	printf("size: %i\n", printf("This is a hex: %x\n", ULONG_MAX));
 
 
 }

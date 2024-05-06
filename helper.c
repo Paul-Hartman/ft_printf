@@ -12,34 +12,7 @@
 
 #include "ft_printf.h"
 
-int ft_print_hex(unsigned long n, char *base)
-{
-	unsigned long power;
-	int count;
-	int digit;
-	unsigned long num;
-	num = n & 0xFFFFFFFFFFFFFFFF;
-
-	count = 0;
-	power = 1;
-	while (power <= num / 16) 
-		power *= 16;
-	while (power > 0)
-	{
-		digit = num / power;
-		if (digit < 16)
-		{
-			ft_putchar_fd(base[digit], 1);
-			count++;
-		}
-		num %= power;
-		power /= 16;
-	}
-	return (count);
-}
-
-//please write me a print hex function that uses bit shifts
-int ft_print_hex_shift(unsigned long n, char *base)
+int ft_print_hex(long n, char *base, int hex)
 {
 	unsigned long num;
 	int count;
@@ -47,8 +20,16 @@ int ft_print_hex_shift(unsigned long n, char *base)
 	char output[16];
 	int i;
 	i=0;
-	num = n;
 	count = 0;
+	if (n == 0)
+	{
+		ft_putchar_fd('0', 1);
+		return (1);
+	}
+	if (hex)
+		num = n & 0xFFFFFFFF;
+	else
+		num = n;
 	while (num > 0)
 	{
 		digit = num & 0xF;
@@ -57,11 +38,7 @@ int ft_print_hex_shift(unsigned long n, char *base)
 		num >>= 4;
 	}
 	while (i>0)
-	{
 		ft_putchar_fd(output[--i], 1);
-	}
-	
-	
 	return (count);
 }
 
@@ -77,7 +54,7 @@ int ft_print_pointer(void *n)
 	count = 2;
 	address = (unsigned long)n;
 	ft_putstr_fd("0x", 1);
-	count += ft_print_hex(address, "0123456789abcdef");
+	count += ft_print_hex(address, "0123456789abcdef", 0);
 	return (count); 
 }
 

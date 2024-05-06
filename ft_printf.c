@@ -30,9 +30,9 @@ int	parse_string(const char ch, va_list args)
 	if (ch == 'u')
 		count = ft_countnbruns(va_arg(args, unsigned int));
 	if (ch == 'x')
-		count = ft_print_hex(va_arg(args, int), "0123456789abcdef");
+		count = ft_print_hex(va_arg(args, int), "0123456789abcdef", 1);
 	if (ch == 'X')
-		count = ft_print_hex(va_arg(args, int), "0123456789ABCDEF");
+		count = ft_print_hex(va_arg(args, int), "0123456789ABCDEF", 1);
 	if (ch == '%')
 	{
 		ft_putchar_fd('%', 1);
