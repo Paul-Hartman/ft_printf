@@ -67,3 +67,15 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
+
+void	ft_putnbruns_fd(unsigned int n, int fd)
+{
+	if (n >= 10)
+	{
+		ft_putnbruns_fd(n / 10, fd);
+		ft_putchar_fd(n % 10 + '0', fd);
+	}
+	else
+		ft_putchar_fd(n + '0', fd);
+}
+
